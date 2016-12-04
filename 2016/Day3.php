@@ -48,4 +48,4 @@ while($grid[$row][$col] != null) {
 
 
 dbg('Total possible for part 1: '.$totalPossibleP1,'lightgreen');
-dbg('Total possible for part 1: '.$totalPossibleP2,'lightpink');
+dbg('Total possible for part 2: '.$totalPossibleP2,'lightpink');
