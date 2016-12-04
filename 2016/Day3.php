@@ -5,9 +5,6 @@ $instString = file_get_contents('./3.dat', true);
 
 $instructions = explode("\n", $instString);
 
-//dbg($grid);
-$problem = 2;   //change to switch between problems
-
 function addRow($grid) {
     global $row, $col;
     $row++;
