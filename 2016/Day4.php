@@ -5,14 +5,10 @@ $instString = file_get_contents('./4.dat', true);
 
 $roomIDs = explode("\n", $instString);
 
-//dbg($grid);
 $problem = 1;   //change to switch between problems
 
 function parseRoomString($roomID) {
     preg_match('/([a-z|\-]+)(\d+)\[(.*)\]/', $roomID, $info);
-    foreach (range('a', 'z') as $letter) {
-        $charHist[$letter] = 0;
-    }
     $characters = str_replace('-','',$info[1]);
     for($i=0;$i<strlen($characters);$i++) {
         $charHist[$characters[$i]]++;
