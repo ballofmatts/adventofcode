@@ -53,5 +53,5 @@ foreach($grid as $row) {
     $totalPixels += array_sum($row);
 }
 
-dbg('Total P1 TLS IPs: '.$totalPixels,'lightgreen');
+dbg('Total lit pixels: '.$totalPixels,'lightgreen');
 dispGrid($grid);
