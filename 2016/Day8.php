@@ -5,7 +5,6 @@ $CommandFile = file_get_contents('./8.dat', true);
 $commands = explode("\n", $CommandFile);
 
 //$commands = array('rect 3x2','rotate column x=1 by 1','rotate row y=0 by 4','rotate column x=1 by 1');
-$grid = array_fill(0, 6, array_fill(0, 50, 0));
 
 //$grid = array_fill(0, 3, array_fill(0, 7, 0));
 function dispGrid($grid) {
@@ -20,6 +19,8 @@ function dispGrid($grid) {
     echo '</pre>';
 }
 
+$grid = array_fill(0, 6, array_fill(0, 50, 0));
+
 foreach($commands as $command) {
     if(substr($IP,0,4) == 'rect') {
         preg_match('/(\d+)x(\d+)/', $command, $matches);
@@ -29,7 +30,7 @@ foreach($commands as $command) {
             }
         }
     }
-    else {
+    else {  //y
         preg_match('/([xy])=(\d+) by (\d+)/', $command, $matches);
         if($matches[1] == 'y') {
             for($i=0;$i<$matches[3];$i++) {
