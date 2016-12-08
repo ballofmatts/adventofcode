@@ -22,7 +22,7 @@ function dispGrid($grid) {
 $grid = array_fill(0, 6, array_fill(0, 50, 0));
 
 foreach($commands as $command) {
-    if(substr($IP,0,4) == 'rect') {
+    if(substr($command,0,4) == 'rect') {
         preg_match('/(\d+)x(\d+)/', $command, $matches);
         for($i=0;$i<$matches[1];$i++) {
             for($j=0;$j<$matches[2];$j++) {
