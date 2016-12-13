@@ -4,6 +4,7 @@ include('../includes/common.php');
 $start = array(1,1);
 $favNum = 1352;
 $target = array(31,39);
+$p2MaxSteps = 50;
 
 //$favNum = 10;
 //$target = array(7,4);
@@ -21,7 +22,7 @@ function disabledNode($x,$y) {
 }
 
 function aStarSearch($start,$target,$isP2) {
-    global $maxDimensions;
+    global $maxDimensions,$p2MaxSteps;
     $p1Steps = 0;
     $p2Steps = 0;
     $route = array();
@@ -87,7 +88,7 @@ function aStarSearch($start,$target,$isP2) {
                 }
                 $tempNode['i'] = $tempNode[0].'.'.$tempNode[1];
                 $tentative_gScore = $gScore[$current['i']] + 1;
-                if(!array_key_exists($tempNode[0].'.'.$tempNode[1],$open) && (($isP2 && $tentative_gScore <= 50) || !$isP2)) {
+                if(!array_key_exists($tempNode[0].'.'.$tempNode[1],$open) && (($isP2 && $tentative_gScore <= $p2MaxSteps) || !$isP2)) {
                     //dbg('good. adding to open.','lightgreen');
                     $open[$tempNode['i']] = $tempNode;
                 }
@@ -101,8 +102,13 @@ function aStarSearch($start,$target,$isP2) {
             }
         }
     }
-    $p2Steps = count($gScore);
-    return array($p2Steps,$open,$close,$gScore);
+    if($isP2) {
+        $p2Steps = count($gScore);
+        return array($p2Steps,$open,$close,$gScore);
+    }
+    else {
+        return array('No solution',$route,$open,$close,$gScore);
+    }
 }
 
 list($p1Steps,$route,$open,$close,$gScore) = aStarSearch($start,$target,false);
