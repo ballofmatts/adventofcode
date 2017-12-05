@@ -1,9 +1,9 @@
 package main
 
-import "./Day2"
+import "./Day5"
 
 func main() {
-	Day2.Day2()
+	Day5.Day5()
 
 	return
 }
